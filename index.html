@@ -169,41 +169,10 @@
     </div>
 </body>
 </html>
-const jobData = {
-    boilermaker: {
-        jobTitle: "Boilermaker",
-        company: "ELS - Exclusive Labour Services",
-        location: "Welshpool",
-        logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
-        about: "Join our dynamic team at ELS, where innovation meets opportunity in boilermaking.",
-        role: "- Fabricate and repair metal structures\n- Read and interpret technical drawings\n- Ensure safety standards are met",
-        requirements: "- Certified Boilermaker\n- 3+ years of experience\n- Strong problem-solving skills",
-        benefits: "- Competitive salary\n- Health and dental insurance\n- Professional development opportunities",
-        applyUrl: "https://example.com/apply-boilermaker"
-    },
-    welder: {
-        jobTitle: "Welder",
-        company: "ELS - Exclusive Labour Services",
-        location: "Welshpool",
-        logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
-        about: "ELS is seeking skilled welders to join our growing team in Welshpool.",
-        role: "- Perform various welding techniques\n- Read and interpret blueprints\n- Maintain welding equipment",
-        requirements: "- Certified Welder\n- 2+ years of experience\n- Attention to detail",
-        benefits: "- Competitive hourly rate\n- Overtime opportunities\n- Safety equipment provided",
-        applyUrl: "https://example.com/apply-welder"
-    },
-    mechanic: {
-        jobTitle: "Mechanic",
-        company: "ELS - Exclusive Labour Services",
-        location: "Welshpool",
-        logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
-        about: "ELS is looking for experienced mechanics to join our maintenance team in Welshpool.",
-        role: "- Diagnose and repair equipment\n- Perform preventive maintenance\n- Document all maintenance activities",
-        requirements: "- Certified Mechanic\n- 5+ years of experience\n- Strong analytical skills",
-        benefits: "- Full benefits package\n- 401(k) with company match\n- Ongoing training opportunities",
-        applyUrl: "https://example.com/apply-mechanic"
-    }
-};
+ <script>
+// Start the script at the end of your HTML file, just before the closing </body> tag
+
+// Lines 1-167: Replace everything in the current <script> tag with the following:
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('jobTeaserForm');
@@ -213,6 +182,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const prefillSelect = document.getElementById('prefillSelect');
     const logoUrlInput = document.getElementById('logoUrl');
     const logoPreviewImg = document.getElementById('logoPreviewImg');
+
+    const jobData = {
+        boilermaker: {
+            jobTitle: "Boilermaker",
+            company: "ELS - Exclusive Labour Services",
+            location: "Welshpool",
+            logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
+            about: "Join our dynamic team at ELS, where innovation meets opportunity in boilermaking.",
+            role: "- Fabricate and repair metal structures\n- Read and interpret technical drawings\n- Ensure safety standards are met",
+            requirements: "- Certified Boilermaker\n- 3+ years of experience\n- Strong problem-solving skills",
+            benefits: "- Competitive salary\n- Health and dental insurance\n- Professional development opportunities",
+            applyUrl: "https://example.com/apply-boilermaker"
+        },
+        welder: {
+            jobTitle: "Welder",
+            company: "ELS - Exclusive Labour Services",
+            location: "Welshpool",
+            logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
+            about: "ELS is seeking skilled welders to join our growing team in Welshpool.",
+            role: "- Perform various welding techniques\n- Read and interpret blueprints\n- Maintain welding equipment",
+            requirements: "- Certified Welder\n- 2+ years of experience\n- Attention to detail",
+            benefits: "- Competitive hourly rate\n- Overtime opportunities\n- Safety equipment provided",
+            applyUrl: "https://example.com/apply-welder"
+        },
+        mechanic: {
+            jobTitle: "Mechanic",
+            company: "ELS - Exclusive Labour Services",
+            location: "Welshpool",
+            logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
+            about: "ELS is looking for experienced mechanics to join our maintenance team in Welshpool.",
+            role: "- Diagnose and repair equipment\n- Perform preventive maintenance\n- Document all maintenance activities",
+            requirements: "- Certified Mechanic\n- 5+ years of experience\n- Strong analytical skills",
+            benefits: "- Full benefits package\n- 401(k) with company match\n- Ongoing training opportunities",
+            applyUrl: "https://example.com/apply-mechanic"
+        }
+    };
 
     function updatePreview() {
         const jobTitle = document.getElementById('jobTitle').value;
@@ -234,14 +239,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('linkedinDescription').setAttribute('content', `Exciting job opportunity at ${company} in ${location}`);
         document.getElementById('linkedinImage').setAttribute('content', logoUrl);
 
-        document.getElementById('previewTitle').textContent = jobTitle;
-        document.getElementById('previewCompanyLocation').textContent = `${company} - ${location}`;
-        document.getElementById('previewLogo').src = logoUrl;
-        document.getElementById('aboutContent').textContent = about;
-        document.getElementById('roleContent').textContent = role;
-        document.getElementById('youContent').textContent = requirements;
-        document.getElementById('benefitsContent').textContent = benefits;
-        document.getElementById('previewApply').href = applyUrl;
+        // Make sure these IDs exist in your HTML
+        if (document.getElementById('previewTitle')) document.getElementById('previewTitle').textContent = jobTitle;
+        if (document.getElementById('previewCompanyLocation')) document.getElementById('previewCompanyLocation').textContent = `${company} - ${location}`;
+        if (document.getElementById('previewLogo')) document.getElementById('previewLogo').src = logoUrl;
+        if (document.getElementById('aboutContent')) document.getElementById('aboutContent').textContent = about;
+        if (document.getElementById('roleContent')) document.getElementById('roleContent').textContent = role;
+        if (document.getElementById('youContent')) document.getElementById('youContent').textContent = requirements;
+        if (document.getElementById('benefitsContent')) document.getElementById('benefitsContent').textContent = benefits;
+        if (document.getElementById('previewApply')) document.getElementById('previewApply').href = applyUrl;
 
         previewSection.style.display = 'block';
     }
@@ -282,4 +288,3 @@ document.addEventListener('DOMContentLoaded', function() {
     logoPreviewImg.src = logoUrlInput.value;
 });
 </script>
-
