@@ -153,20 +153,41 @@
             <input type="url" id="applyUrl" name="applyUrl" required>
 
             <div class="button-group">
-      <button type="submit" id="generateButton">Generate Teaser</button>
-<button type="button" id="cleak
-    
-</script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
+     <div class="button-group">
+                <button type="submit" id="generateButton">Generate Teaser</button>
+                <button type="button" id="clearFormButton">Clear Form</button>
+            </div>
+        </form>
+
+        <div id="previewSection" style="display:none;">
+            <h2 id="previewTitle"></h2>
+            <p id="previewCompanyLocation"></p>
+            <img id="previewLogo" src="" alt="Company Logo">
+            <h3>About</h3>
+            <p id="aboutContent"></p>
+            <h3>Role</h3>
+            <p id="roleContent"></p>
+            <h3>You</h3>
+            <p id="youContent"></p>
+            <h3>Benefits</h3>
+            <p id="benefitsContent"></p>
+            <a id="previewApply" href="" target="_blank">Apply Now</a>
+        </div>
+
+        <div id="debugInfo">
+            <h3>Debug Information:</h3>
+            <p>No data saved yet</p>
+        </div>
+    </div>
+</body>
+</html>
     const form = document.getElementById('jobTeaserForm');
     const previewSection = document.getElementById('previewSection');
     const prefillButton = document.getElementById('prefillButton');
     const clearFormButton = document.getElementById('clearFormButton');
     const prefillSelect = document.getElementById('prefillSelect');
     const logoUrlInput = document.getElementById('logoUrl');
-    const logoPreviewImg = document.getElementById('logoPreviewImg');
-
+    const logoPreviewImg = document.getElementById('logoPreviewImg')
     const jobData = {
         boilermaker: {
             jobTitle: "Boilermaker",
