@@ -154,33 +154,10 @@
 
             <div class="button-group">
       <button type="submit" id="generateButton">Generate Teaser</button>
-<button type="button" id="clearFormButton">Clear Form</button>
-        </div>
-    </form>
-
-    <div id="previewSection" style="display:none;">
-        <h2 id="previewTitle"></h2>
-        <p id="previewCompanyLocation"></p>
-        <img id="previewLogo" src="" alt="Company Logo">
-        <h3>About</h3>
-        <p id="aboutContent"></p>
-        <h3>Role</h3>
-        <p id="roleContent"></p>
-        <h3>You</h3>
-        <p id="youContent"></p>
-        <h3>Benefits</h3>
-        <p id="benefitsContent"></p>
-        <a id="previewApply" href="" target="_blank">Apply Now</a>
-    </div>
-
-    <div id="debugInfo">
-        <h3>Debug Information:</h3>
-        <p>No data saved yet</p>
-    </div>
-</div>
-</body>
-</html>
-<script>
+<button type="button" id="cleak
+    
+</script>
+    <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('jobTeaserForm');
     const previewSection = document.getElementById('previewSection');
@@ -188,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearFormButton = document.getElementById('clearFormButton');
     const prefillSelect = document.getElementById('prefillSelect');
     const logoUrlInput = document.getElementById('logoUrl');
-    const logoPreviewImg = document.getElementById('logoPreviewImg');
     const logoPreviewImg = document.getElementById('logoPreviewImg');
 
     const jobData = {
@@ -247,15 +223,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('linkedinDescription').setAttribute('content', `Exciting job opportunity at ${company} in ${location}`);
         document.getElementById('linkedinImage').setAttribute('content', logoUrl);
 
-        // Make sure these IDs exist in your HTML
-        if (document.getElementById('previewTitle')) document.getElementById('previewTitle').textContent = jobTitle;
-        if (document.getElementById('previewCompanyLocation')) document.getElementById('previewCompanyLocation').textContent = `${company} - ${location}`;
-        if (document.getElementById('previewLogo')) document.getElementById('previewLogo').src = logoUrl;
-        if (document.getElementById('aboutContent')) document.getElementById('aboutContent').textContent = about;
-        if (document.getElementById('roleContent')) document.getElementById('roleContent').textContent = role;
-        if (document.getElementById('youContent')) document.getElementById('youContent').textContent = requirements;
-        if (document.getElementById('benefitsContent')) document.getElementById('benefitsContent').textContent = benefits;
-        if (document.getElementById('previewApply')) document.getElementById('previewApply').href = applyUrl;
+        document.getElementById('previewTitle').textContent = jobTitle;
+        document.getElementById('previewCompanyLocation').textContent = `${company} - ${location}`;
+        document.getElementById('previewLogo').src = logoUrl;
+        document.getElementById('aboutContent').textContent = about;
+        document.getElementById('roleContent').textContent = role;
+        document.getElementById('youContent').textContent = requirements;
+        document.getElementById('benefitsContent').textContent = benefits;
+        document.getElementById('previewApply').href = applyUrl;
 
         previewSection.style.display = 'block';
     }
