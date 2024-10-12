@@ -18,94 +18,21 @@
     <meta name="linkedin:image" content="https://i.ibb.co/4s0GW9g/IMG-1259.jpg" id="linkedinImage">
     
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1, h2 {
-            color: #0056b3;
-            margin-top: 0;
-        }
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        button {
-            padding: 10px 15px;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        #prefillButton {
-            background-color: #4CAF50;
-            margin-top: 10px;
-        }
-        #generateButton {
-            background-color: #0099ff;
-        }
-        #clearFormButton {
-            background-color: #f44336;
-        }
-        #logoPreview {
-            width: 100px;
-            height: 100px;
-            border: 2px dashed #ccc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-        }
-        #logoPreview img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            .container {
-                padding: 15px;
-            }
-            .button-group {
-                flex-direction: column;
-            }
-            button {
-                margin-top: 10px;
-                width: 100%;
-            }
-        }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f0f0f0; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #0056b3; margin-top: 0; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, textarea, select { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ddd; border-radius: 4px; }
+        textarea { height: 100px; resize: vertical; }
+        .button-group { display: flex; justify-content: space-between; margin-top: 20px; }
+        button { padding: 10px 15px; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        #prefillButton { background-color: #4CAF50; margin-top: 10px; }
+        #generateButton { background-color: #0099ff; }
+        #clearFormButton { background-color: #f44336; }
+        #logoPreview { width: 100px; height: 100px; border: 2px dashed #ccc; display: flex; justify-content: center; align-items: center; margin-top: 10px; }
+        #logoPreview img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        #previewSection { border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 4px; }
+        @media (max-width: 600px) { body { padding: 10px; } .container { padding: 15px; } .button-group { flex-direction: column; } button { margin-top: 10px; width: 100%; } }
     </style>
 </head>
 <body>
@@ -153,7 +80,6 @@
             <input type="url" id="applyUrl" name="applyUrl" required>
 
             <div class="button-group">
-     <div class="button-group">
                 <button type="submit" id="generateButton">Generate Teaser</button>
                 <button type="button" id="clearFormButton">Clear Form</button>
             </div>
@@ -179,15 +105,17 @@
             <p>No data saved yet</p>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
-</html>
+</html>document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('jobTeaserForm');
     const previewSection = document.getElementById('previewSection');
     const prefillButton = document.getElementById('prefillButton');
     const clearFormButton = document.getElementById('clearFormButton');
     const prefillSelect = document.getElementById('prefillSelect');
     const logoUrlInput = document.getElementById('logoUrl');
-    const logoPreviewImg = document.getElementById('logoPreviewImg')
+    const logoPreviewImg = document.getElementById('logoPreviewImg');
+
     const jobData = {
         boilermaker: {
             jobTitle: "Boilermaker",
@@ -291,4 +219,3 @@
 
     logoPreviewImg.src = logoUrlInput.value;
 });
-</script>
