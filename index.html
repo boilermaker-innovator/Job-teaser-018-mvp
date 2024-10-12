@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELS - Exclusive Labour Services Job Teaser Creator</title>
+    
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:title" content="Job Teaser" id="ogTitle">
+    <meta property="og:description" content="Exciting job opportunity" id="ogDescription">
+    <meta property="og:image" content="https://i.ibb.co/4s0GW9g/IMG-1259.jpg" id="ogImage">
+    <meta property="og:url" content="" id="ogUrl">
+    <meta property="og:type" content="website">
+    
+    <!-- LinkedIn specific -->
+    <meta name="linkedin:title" content="Job Teaser" id="linkedinTitle">
+    <meta name="linkedin:description" content="Exciting job opportunity" id="linkedinDescription">
+    <meta name="linkedin:image" content="https://i.ibb.co/4s0GW9g/IMG-1259.jpg" id="linkedinImage">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #0056b3;
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #prefillButton {
+            background-color: #4CAF50;
+            margin-top: 10px;
+        }
+        #generateButton {
+            background-color: #0099ff;
+        }
+        #clearFormButton {
+            background-color: #f44336;
+        }
+        #logoPreview {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        #logoPreview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .button-group {
+                flex-direction: column;
+            }
+            button {
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ELS - Exclusive Labour Services</h1>
+        <h2>Job Teaser Creator</h2>
+        <div id="prefillOptions">
+            <select id="prefillSelect">
+                <option value="">Select a template</option>
+                <option value="boilermaker">Boilermaker</option>
+                <option value="welder">Welder</option>
+                <option value="mechanic">Mechanic</option>
+            </select>
+            <button id="prefillButton">Pre-fill Form</button>
+        </div>
+        <form id="jobTeaserForm">
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" name="jobTitle" required>
+
+            <label for="company">Company Name:</label>
+            <input type="text" id="company" name="company" value="ELS - Exclusive Labour Services" required>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" value="Welshpool" required>
+
+            <label for="logoUrl">Logo URL:</label>
+            <input type="url" id="logoUrl" name="logoUrl" value="https://i.ibb.co/4s0GW9g/IMG-1259.jpg" required>
+            <div id="logoPreview">
+                <img src="https://i.ibb.co/4s0GW9g/IMG-1259.jpg" alt="Logo Preview" id="logoPreviewImg">
+            </div>
+
+            <label for="about">About:</label>
+            <textarea id="about" name="about" required></textarea>
+
+            <label for="role">Role:</label>
+            <textarea id="role" name="role" required></textarea>
+
+            <label for="requirements">You:</label>
+            <textarea id="requirements" name="requirements" required></textarea>
+
+            <label for="benefits">Benefits:</label>
+            <textarea id="benefits" name="benefits" required></textarea>
+
+            <label for="applyUrl">Apply URL:</label>
+            <input type="url" id="applyUrl" name="applyUrl" required>
+
+            <div class="button-group">
+                <button type="submit" id="generateButton">Generate Teaser</button>
+                <button type="button" id="clearFormButton">Clear Form</button>
+            </div>
+        </form>
+
+        <div id="previewSection" style="display:none;">
+            <!-- Your existing preview HTML here -->
+        </div>
+
+        <div id="debugInfo">
+            <h3>Debug Information:</h3>
+            <p>No data saved yet</p>
+        </div>
+    </div>
+</body>
+</html>
+const jobData = {
+    boilermaker: {
+        jobTitle: "Boilermaker",
+        company: "ELS - Exclusive Labour Services",
+        location: "Welshpool",
+        logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
+        about: "Join our dynamic team at ELS, where innovation meets opportunity in boilermaking.",
+        role: "- Fabricate and repair metal structures\n- Read and interpret technical drawings\n- Ensure safety standards are met",
+        requirements: "- Certified Boilermaker\n- 3+ years of experience\n- Strong problem-solving skills",
+        benefits: "- Competitive salary\n- Health and dental insurance\n- Professional development opportunities",
+        applyUrl: "https://example.com/apply-boilermaker"
+    },
+    welder: {
+        jobTitle: "Welder",
+        company: "ELS - Exclusive Labour Services",
+        location: "Welshpool",
+        logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
+        about: "ELS is seeking skilled welders to join our growing team in Welshpool.",
+        role: "- Perform various welding techniques\n- Read and interpret blueprints\n- Maintain welding equipment",
+        requirements: "- Certified Welder\n- 2+ years of experience\n- Attention to detail",
+        benefits: "- Competitive hourly rate\n- Overtime opportunities\n- Safety equipment provided",
+        applyUrl: "https://example.com/apply-welder"
+    },
+    mechanic: {
+        jobTitle: "Mechanic",
+        company: "ELS - Exclusive Labour Services",
+        location: "Welshpool",
+        logoUrl: "https://i.ibb.co/4s0GW9g/IMG-1259.jpg",
+        about: "ELS is looking for experienced mechanics to join our maintenance team in Welshpool.",
+        role: "- Diagnose and repair equipment\n- Perform preventive maintenance\n- Document all maintenance activities",
+        requirements: "- Certified Mechanic\n- 5+ years of experience\n- Strong analytical skills",
+        benefits: "- Full benefits package\n- 401(k) with company match\n- Ongoing training opportunities",
+        applyUrl: "https://example.com/apply-mechanic"
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('jobTeaserForm');
+    const previewSection = document.getElementById('previewSection');
+    const prefillButton = document.getElementById('prefillButton');
+    const clearFormButton = document.getElementById('clearFormButton');
+    const prefillSelect = document.getElementById('prefillSelect');
+    const logoUrlInput = document.getElementById('logoUrl');
+    const logoPreviewImg = document.getElementById('logoPreviewImg');
+
+    function updatePreview() {
+        const jobTitle = document.getElementById('jobTitle').value;
+        const company = document.getElementById('company').value;
+        const location = document.getElementById('location').value;
+        const logoUrl = document.getElementById('logoUrl').value;
+        const about = document.getElementById('about').value;
+        const role = document.getElementById('role').value;
+        const requirements = document.getElementById('requirements').value;
+        const benefits = document.getElementById('benefits').value;
+        const applyUrl = document.getElementById('applyUrl').value;
+
+        document.getElementById('ogTitle').setAttribute('content', `Job Teaser: ${jobTitle}`);
+        document.getElementById('ogDescription').setAttribute('content', `Exciting job opportunity at ${company} in ${location}`);
+        document.getElementById('ogImage').setAttribute('content', logoUrl);
+        document.getElementById('ogUrl').setAttribute('content', window.location.href);
+
+        document.getElementById('linkedinTitle').setAttribute('content', `Job Teaser: ${jobTitle}`);
+        document.getElementById('linkedinDescription').setAttribute('content', `Exciting job opportunity at ${company} in ${location}`);
+        document.getElementById('linkedinImage').setAttribute('content', logoUrl);
+
+        document.getElementById('previewTitle').textContent = jobTitle;
+        document.getElementById('previewCompanyLocation').textContent = `${company} - ${location}`;
+        document.getElementById('previewLogo').src = logoUrl;
+        document.getElementById('aboutContent').textContent = about;
+        document.getElementById('roleContent').textContent = role;
+        document.getElementById('youContent').textContent = requirements;
+        document.getElementById('benefitsContent').textContent = benefits;
+        document.getElementById('previewApply').href = applyUrl;
+
+        previewSection.style.display = 'block';
+    }
+
+    prefillButton.addEventListener('click', function() {
+        const selectedJob = prefillSelect.value;
+        if (selectedJob && jobData[selectedJob]) {
+            const data = jobData[selectedJob];
+            for (const [key, value] of Object.entries(data)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.value = value;
+                }
+            }
+            logoPreviewImg.src = data.logoUrl;
+            updatePreview();
+        }
+    });
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        updatePreview();
+        document.getElementById('debugInfo').innerHTML = '<h3>Debug Information:</h3><p>Teaser generated successfully</p>';
+    });
+
+    clearFormButton.addEventListener('click', function() {
+        form.reset();
+        prefillSelect.value = '';
+        logoPreviewImg.src = '';
+        previewSection.style.display = 'none';
+        document.getElementById('debugInfo').innerHTML = '<h3>Debug Information:</h3><p>Form cleared</p>';
+    });
+
+    logoUrlInput.addEventListener('input', function() {
+        logoPreviewImg.src = this.value;
+    });
+
+    logoPreviewImg.src = logoUrlInput.value;
+});
+</script>
+
