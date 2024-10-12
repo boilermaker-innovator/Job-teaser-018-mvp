@@ -67,9 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('previewCompanyLocation').textContent = `${company} - ${location}`;
         document.getElementById('previewLogo').src = logoUrl;
         document.getElementById('aboutContent').textContent = about;
-        document.getElementById('roleContent').textContent = role;
-        document.getElementById('youContent').textContent = requirements;
-        document.getElementById('benefitsContent').textContent = benefits;
+        document.getElementById('roleContent').innerHTML = role.replace(/\n/g, '<br>');
+        document.getElementById('youContent').innerHTML = requirements.replace(/\n/g, '<br>');
+        document.getElementById('benefitsContent').innerHTML = benefits.replace(/\n/g, '<br>');
         document.getElementById('previewApply').href = applyUrl;
 
         previewSection.style.display = 'block';
